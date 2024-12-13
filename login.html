@@ -7,9 +7,6 @@
         const enteredEmail = document.getElementById('email').value;
         const enteredPassword = document.getElementById('password').value;
 
-        // Get the stored user data from localStorage
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-
         // Get the message element where we will show status messages
         const messageElement = document.getElementById('message');
 
@@ -20,21 +17,34 @@
             return;
         }
 
+        // Get the stored user data from localStorage
+        const storedUser = JSON.parse(localStorage.getItem('user'));
+
+        // Clear previous messages
+        messageElement.textContent = '';
+
         // Check if the stored user exists
         if (storedUser) {
             // If the user exists, check if the email and password match
             if (storedUser.email === enteredEmail && storedUser.password === enteredPassword) {
                 // Successful login, redirect to the home page
-                window.location.href = 'home.html'; // Change to your home page
+                window.location.href = 'home.html'; // Change to your home page URL
             } else {
                 // If email or password doesn't match
                 messageElement.textContent = "Invalid email or password. Please try again.";
                 messageElement.style.color = "red";
+                clearFormFields();  // Optional: clear the form fields on failure
             }
         } else {
             // If the user is not found in localStorage, prompt them to sign up
             messageElement.textContent = "You need to sign up first!";
             messageElement.style.color = "red";
         }
+    }
+
+    // Optional: Clears form fields after failed login attempt
+    function clearFormFields() {
+        document.getElementById('email').value = '';
+        document.getElementById('password').value = '';
     }
 </script>
