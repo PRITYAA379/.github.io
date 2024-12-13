@@ -18,11 +18,20 @@
     <script>
         // Function to handle sign out
         function signOut() {
-            // Remove user data from localStorage
-            localStorage.removeItem('user');
+            // Check if the user is logged in
+            if (localStorage.getItem('user')) {
+                // Remove user data from localStorage
+                localStorage.removeItem('user');
 
-            // Redirect to login page
-            window.location.href = 'login.html';  // Redirect to the login page
+                // Optionally show a message
+                alert('You have been signed out.');
+
+                // Redirect to the login page
+                window.location.href = 'login.html';  // Redirect to the login page
+            } else {
+                // If no user is found in localStorage, alert the user
+                alert('No user is currently logged in.');
+            }
         }
     </script>
 </body>
