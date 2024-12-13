@@ -1,3 +1,10 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -13,7 +20,7 @@ body {
 .container {
     text-align: center;
     background: rgba(255, 255, 255, 0.2);
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     position: relative;
@@ -37,6 +44,49 @@ body {
     color: #fff;
     margin-bottom: 20px;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for the form elements in signup.html */
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    text-align: left;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #fff;
+}
+
+form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #1e90ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #3742fa;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
 }
 
 .btn {
@@ -88,6 +138,7 @@ body {
     opacity: 1;
 }
 
+/* Ripple effect on button click */
 .ripple {
     position: absolute;
     width: 20px;
