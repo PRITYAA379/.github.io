@@ -68,6 +68,12 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #1e90ff;
+    outline: none;
 }
 
 button {
@@ -80,7 +86,7 @@ button {
     font-size: 16px;
     cursor: pointer;
     width: 100%;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 button:hover {
@@ -89,4 +95,23 @@ button:hover {
 
 button:active {
     background-color: #192a56;
+    transform: scale(0.98); /* Slight scaling effect on active */
+}
+
+/* Success message */
+#message {
+    color: green;
+    margin-top: 20px;
+    font-size: 16px;
+    display: none;
+}
+
+/* Link styling */
+a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
