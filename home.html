@@ -10,7 +10,20 @@
     <div class="container">
         <h2>Welcome to Quantum Surface</h2>
         <p>Here is your home page!</p>
-        <!-- You can add your podcast posts or other content here -->
+
+        <!-- Sign Out button -->
+        <button class="btn" onclick="signOut()">Sign Out</button>
     </div>
+
+    <script>
+        // Function to handle sign out
+        function signOut() {
+            // Remove user data from localStorage
+            localStorage.removeItem('user');
+
+            // Redirect to login page
+            window.location.href = 'login.html';  // Redirect to the login page
+        }
+    </script>
 </body>
 </html>
