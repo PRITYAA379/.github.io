@@ -52,6 +52,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 label {
@@ -71,11 +72,13 @@ input {
     transition: border-color 0.3s ease;
 }
 
+/* Focused input field */
 input:focus {
     border-color: #1e90ff;
     outline: none;
 }
 
+/* Button styles */
 button {
     margin-top: 20px;
     padding: 10px 20px;
@@ -86,16 +89,19 @@ button {
     font-size: 16px;
     cursor: pointer;
     width: 100%;
-    transition: background-color 0.3s ease, transform 0.1s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
 }
 
+/* Button hover effect */
 button:hover {
     background-color: #3742fa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Button active effect */
 button:active {
     background-color: #192a56;
-    transform: scale(0.98); /* Slight scaling effect on active */
+    transform: scale(0.98);
 }
 
 /* Success message */
@@ -114,4 +120,19 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    .brand-name {
+        font-size: 28px;
+    }
+
+    input, button {
+        font-size: 14px;
+    }
 }
