@@ -1,4 +1,14 @@
 <!-- signup.html -->
+<form id="signupForm" onsubmit="handleFormSubmit(event)">
+    <input type="text" id="name" placeholder="Enter your name" required />
+    <input type="text" id="phone" placeholder="Enter your phone number" required />
+    <input type="email" id="email" placeholder="Enter your email" required />
+    <input type="password" id="password" placeholder="Enter your password" required />
+    <button type="submit">Sign Up</button>
+</form>
+
+<p id="message"></p>
+
 <script>
     function handleFormSubmit(event) {
         event.preventDefault(); // Prevent form from submitting normally
@@ -9,6 +19,32 @@
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
+        // Get message element
+        const messageElement = document.getElementById('message');
+
+        // Basic validation
+        if (!name || !phone || !email || !password) {
+            messageElement.textContent = "All fields are required!";
+            messageElement.style.color = "red";
+            return;
+        }
+
+        // Email validation (basic)
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            messageElement.textContent = "Please enter a valid email address.";
+            messageElement.style.color = "red";
+            return;
+        }
+
+        // Check if user already exists in localStorage
+        const existingUser = JSON.parse(localStorage.getItem('user'));
+        if (existingUser && existingUser.email === email) {
+            messageElement.textContent = "An account with this email already exists.";
+            messageElement.style.color = "red";
+            return;
+        }
+
         // Save the user info in localStorage (simulating a backend)
         const user = {
             name,
@@ -18,8 +54,14 @@
         };
         localStorage.setItem('user', JSON.stringify(user));  // Storing user data
 
-        // After successful signup, redirect to the home page
-        alert('Signup successful! Redirecting to the home page...');
-        window.location.href = 'home.html';  // Redirect to home page
+        // After successful signup, show success message
+        messageElement.textContent = "Signup successful! Redirecting to the home page...";
+        messageElement.style.color = "green";
+
+        // Redirect to the home page after a short delay
+        setTimeout(() => {
+            window.location.href = 'home.html';  // Redirect to home page
+        }, 2000);  // 2-second delay for better user experience
     }
 </script>
+
