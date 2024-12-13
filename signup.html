@@ -3,71 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Quantum Surface</title>
+    <title>Signup - Quantum Surface</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h2>Sign Up</h2>
-        <form id="signupForm" onsubmit="handleSignUp(event)">
-            <label for="name">Full Name</label>
+        <h2>Signup</h2>
+        <form id="signupForm" onsubmit="handleFormSubmit(event)">
+            <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
 
             <label for="phone">Phone Number</label>
             <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
 
             <label for="password">Create Password</label>
             <input type="password" id="password" name="password" required>
 
             <button type="submit" class="btn">Sign Up</button>
         </form>
-        <p id="message"></p>
-        <p>Already have an account? <a href="login.html">Login</a></p>
     </div>
 
     <script>
-        function handleSignUp(event) {
-            event.preventDefault();  // Prevent the form from submitting traditionally
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent form from submitting normally
 
-            // Get user input from the form
-            const userName = document.getElementById('name').value;
-            const userEmail = document.getElementById('email').value;
-            const userPhone = document.getElementById('phone').value;
-            const userPassword = document.getElementById('password').value;
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-            // Check if the email already exists in localStorage
-            const existingUser = JSON.parse(localStorage.getItem('user'));
+            // Save the user info in localStorage (simulating a backend)
+            localStorage.setItem('user', JSON.stringify({ name, phone, email, password }));
 
-            // Get the message element to display any messages
-            const messageElement = document.getElementById('message');
-
-            // If a user with this email already exists
-            if (existingUser && existingUser.email === userEmail) {
-                messageElement.textContent = "This email is already registered. Please log in.";
-                messageElement.style.color = "red";
-                return;  // Stop the form from continuing
-            }
-
-            // Create a new user object
-            const newUser = {
-                name: userName,
-                email: userEmail,
-                phone: userPhone,
-                password: userPassword
-            };
-
-            // Save the new user data to localStorage
-            localStorage.setItem('user', JSON.stringify(newUser));
-
-            // Show success message
-            messageElement.textContent = "Sign Up successful! You can now log in.";
-            messageElement.style.color = "green";
-
-            // Optionally, redirect to login page after successful sign up
-            // window.location.href = 'login.html'; // Uncomment to redirect
+            // After successful signup, redirect to the home page
+            alert('Signup successful! Redirecting to the home page...');
+            window.location.href = 'home.html';  // Redirect to home page
         }
     </script>
 </body>
