@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h2>Signup</h2>
-        <form action="#" method="post">
+        <form id="signupForm" onsubmit="handleFormSubmit(event)">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
 
@@ -25,5 +25,24 @@
             <button type="submit" class="btn">Sign Up</button>
         </form>
     </div>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Save the user info in localStorage (simulating a backend)
+            localStorage.setItem('user', JSON.stringify({ name, phone, email, password }));
+
+            // After successful signup, redirect to the home page
+            alert('Signup successful! Redirecting to the home page...');
+            window.location.href = 'home.html';  // Redirect to home page
+        }
+    </script>
 </body>
 </html>
