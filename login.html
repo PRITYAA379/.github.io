@@ -13,6 +13,13 @@
         // Get the message element where we will show status messages
         const messageElement = document.getElementById('message');
 
+        // Basic form validation (email and password should not be empty)
+        if (!enteredEmail || !enteredPassword) {
+            messageElement.textContent = "Please enter both email and password.";
+            messageElement.style.color = "red";
+            return;
+        }
+
         // Check if the stored user exists
         if (storedUser) {
             // If the user exists, check if the email and password match
